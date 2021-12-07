@@ -1,0 +1,5 @@
+package com.pika.store.Models.Enums.SecurityEnums;
+
+public enum Role {
+    ROLE_USER, ROLE_ADMIN
+}

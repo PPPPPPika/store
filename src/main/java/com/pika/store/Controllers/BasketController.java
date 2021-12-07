@@ -4,6 +4,7 @@ import com.pika.store.Models.Basket;
 import com.pika.store.Services.BasketServices.BasketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -17,8 +18,8 @@ public class BasketController {
     }
 
     @GetMapping("/{idUser}")
-    public Mono<Basket> getBasket(@PathVariable Long idUser){
-        return basketService.getElement(idUser); //возможно понадобится выводить список предметов в корзине
+    public Flux<Basket> getBasket(@PathVariable Long idUser){
+        return basketService.getElements(idUser);
     }
 
     @PostMapping("/{userId}/{clothesId}")
@@ -26,7 +27,9 @@ public class BasketController {
         return basketService.postElement(userId, clothesId);
     }
 
-    //@DeleteMapping("")
-
+    @DeleteMapping("/{userId}/{clothesId}")
+    public Mono<Void> deleteClotheFromBasket(@PathVariable Long userId, @PathVariable Long clothesId){
+        return basketService.deleteElement(userId, clothesId);
+    }
 
 }

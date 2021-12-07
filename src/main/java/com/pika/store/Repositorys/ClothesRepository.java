@@ -9,4 +9,5 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface ClothesRepository extends ReactiveCrudRepository<Clothes, Long> {
     Flux<Clothes> findByGenus(Genus genus);
+
 }

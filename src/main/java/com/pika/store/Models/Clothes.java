@@ -1,6 +1,5 @@
 package com.pika.store.Models;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.pika.store.Models.Enums.Genus;
 import com.pika.store.Models.Enums.TypeClothes;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-//@JsonAutoDetect
 @Data
 @Table("clothes")
 @NoArgsConstructor

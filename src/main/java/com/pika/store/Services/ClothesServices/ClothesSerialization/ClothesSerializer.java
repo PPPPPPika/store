@@ -22,4 +22,5 @@ public class ClothesSerializer implements JsonSerializer<Clothes> {
         object.addProperty("type", clothes.getType().toString());
         return object;
     }
+
 }

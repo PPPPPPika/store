@@ -29,7 +29,4 @@ public class ClothesPagesController {
     public Mono<Clothes> getClothes(@PathVariable String genus, @PathVariable Long id){
         return clothesPagesService.getElement(genus, id);
     }
-
-
-
 }
