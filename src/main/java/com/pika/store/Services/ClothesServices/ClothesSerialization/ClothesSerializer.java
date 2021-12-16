@@ -8,7 +8,7 @@ import com.pika.store.Models.Clothes;
 
 import java.lang.reflect.Type;
 
-public class ClothesSerializer implements JsonSerializer<Clothes> {
+/*public class ClothesSerializer implements JsonSerializer<Clothes> {
     @Override
     public JsonElement serialize(Clothes clothes, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject object = new JsonObject();
@@ -23,4 +23,4 @@ public class ClothesSerializer implements JsonSerializer<Clothes> {
         return object;
     }
 
-}
+}*/

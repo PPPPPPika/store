@@ -31,4 +31,6 @@ public class Clothes {
     private Genus genus;
     @Column("type")
     private TypeClothes type;
+    @Column("picture")
+    private String url;
 }

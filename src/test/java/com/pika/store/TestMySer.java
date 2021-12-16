@@ -4,7 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import com.pika.store.Models.Clothes;
 import com.pika.store.Models.Enums.Genus;
 import com.pika.store.Models.Enums.TypeClothes;
-import com.pika.store.Services.ClothesServices.ClothesSerialization.ClothesGson;
+//import com.pika.store.Services.ClothesServices.ClothesSerialization.ClothesGson;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ public class TestMySer {
 
         //Gson gsonSer = new ClothesGson().getSerializerGson();
         //Gson gsonDes = new ClothesGson().getDeserializerGson();
+/*
 
         List<Clothes> clothesList = new ArrayList<>(Arrays.asList(new Clothes(1L, "qwe", "asd", "xxx", 1, "pfpfppf", Genus.MAN, TypeClothes.JEANS)));
 
@@ -31,6 +32,7 @@ public class TestMySer {
         Type type1 = new TypeToken<List<Clothes>>(){}.getType();
         List<Clothes> read = new ClothesGson().getDeserializerGson().fromJson(json, type1);
         System.out.println(read);
+*/
 
 
 
@@ -64,9 +66,9 @@ public class TestMySer {
 
         System.out.println(s);*/
 
-        AtomicReference<Clothes> clothes = new AtomicReference<>();
+        /*AtomicReference<Clothes> clothes = new AtomicReference<>();
         clothes.set(new Clothes(1L, "qwe", "asd", "xxx", 1, "pfpfppf", Genus.MAN, TypeClothes.JEANS));
-        System.out.println(clothes.get());
+        System.out.println(clothes.get());*/
 
 
 

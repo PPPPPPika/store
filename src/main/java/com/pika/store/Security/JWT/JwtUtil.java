@@ -18,8 +18,6 @@ public class JwtUtil{
     private String secret;
     @Value("${jjwt.expiration}")
     private String expirationTime;
-    /*@Value("jwt.header")
-    private String authorizationHeader;*/
 
     public String extractUsername(String authToken) {
         return getClaimsFromToken(authToken).getSubject();

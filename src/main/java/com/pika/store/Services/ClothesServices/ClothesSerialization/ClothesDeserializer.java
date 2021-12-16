@@ -7,6 +7,7 @@ import com.pika.store.Models.Enums.TypeClothes;
 
 import java.lang.reflect.Type;
 
+/*
 public class ClothesDeserializer implements JsonDeserializer<Clothes> {
     @Override
     public Clothes deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
@@ -41,5 +42,5 @@ public class ClothesDeserializer implements JsonDeserializer<Clothes> {
             default -> throw new IllegalStateException("Unexpected value(ClothesDeserializer): " + typeClothes);
         };
     }
-    ///////////////////////////////////////
 }
+*/
