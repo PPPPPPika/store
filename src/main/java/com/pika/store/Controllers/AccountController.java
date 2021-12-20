@@ -27,5 +27,4 @@ public class AccountController {
     public Mono<User> editAccount(@RequestBody User editedUser, Principal principal){
         return accountService.editUser(principal.getName(), editedUser);
     }
-
 }

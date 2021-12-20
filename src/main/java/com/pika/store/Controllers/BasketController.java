@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
+
 @RestController
 @RequestMapping("/shop/basket")
 public class BasketController {
@@ -17,9 +19,9 @@ public class BasketController {
         this.basketService = basketService;
     }
 
-    @GetMapping("/{idUser}")
-    public Flux<Basket> getBasket(@PathVariable Long idUser){
-        return basketService.getElements(idUser);
+    @GetMapping("/{userId}")
+    public Flux<Basket> getBasket(@PathVariable Long userId){
+        return basketService.getElements(userId);
     }
 
     @PostMapping("/{userId}/{clothesId}")
@@ -30,6 +32,12 @@ public class BasketController {
     @DeleteMapping("/{userId}/{clothesId}")
     public Mono<Void> deleteClotheFromBasket(@PathVariable Long userId, @PathVariable Long clothesId){
         return basketService.deleteElement(userId, clothesId);
+    }
+
+    @PatchMapping("/{userId}")
+    public Mono<Void> buyClothes(@PathVariable Long userId, @RequestBody Long[] itemsArray){
+        Arrays.stream(itemsArray).forEach(System.out::println);
+        return basketService.buyClothes(userId, itemsArray);
     }
 
 }

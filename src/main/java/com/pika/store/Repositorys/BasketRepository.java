@@ -14,4 +14,7 @@ public interface BasketRepository extends ReactiveCrudRepository<Basket, Long> {
 
     @Query("DELETE FROM public.baskets WHERE owner = :userId and item = :clothesId")
     Mono<Void> deleteElement(Long userId, Long clothesId);
+
+    @Query("DELETE FROM public.baskets WHERE owner = :userId")
+    Mono<Void> deleteElements(Long userId);
 }

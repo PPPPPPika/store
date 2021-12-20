@@ -23,23 +23,16 @@ public class User implements UserDetails {
     @Id
     @Column("id")
     private Long id;
-
     @Column("email")
     private String email;
-
     @Column("name")
     private String name;
-
-    //@JsonIgnore
     @Column("password")
     private String password;
-
     @Column("number")
     private String number;
-
     @Column("address")
     private String address;
-
     @Column("role")
     private Role role;
 

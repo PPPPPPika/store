@@ -4,23 +4,15 @@ import com.pika.store.Security.AuthenticationManager;
 import com.pika.store.Security.SecurityContextRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-import org.springframework.security.web.server.WebFilterExchange;
-import org.springframework.security.web.server.authentication.logout.ServerLogoutSuccessHandler;
-import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
-import org.springframework.web.server.WebSession;
-import reactor.core.publisher.Mono;
 
-import java.net.URI;
+import reactor.core.publisher.Mono;
 
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
@@ -56,7 +48,7 @@ public class SecurityConfiguration {
                 .securityContextRepository(securityContextRepository)
                 .authorizeExchange()
                 .pathMatchers("/", "/login", "/favicon.ico", "/registration", "/shop/main").permitAll()
-                .pathMatchers("/controller").hasRole("ADMIN")
+                .pathMatchers("/shop/adminpage").hasRole("ADMIN")
                 .anyExchange().authenticated()
                 .and()
                 .build();
