@@ -1,13 +1,12 @@
 package com.pika.store.Controllers;
 
 import com.pika.store.Models.Basket;
-import com.pika.store.Services.BasketServices.BasketService;
+import com.pika.store.Services.BasketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.Arrays;
 
 @RestController
 @RequestMapping("/shop/basket")
@@ -25,19 +24,22 @@ public class BasketController {
     }
 
     @PostMapping("/{userId}/{clothesId}")
-    public Mono<Basket> postClothesInBasket(@PathVariable Long userId, @PathVariable Long clothesId){
-        return basketService.postElement(userId, clothesId);
+    public Mono<ResponseEntity<Basket>> postClothesInBasket(@PathVariable Long userId, @PathVariable Long clothesId){
+        return basketService.postElement(userId, clothesId)
+                .map(ResponseEntity::ok);
     }
 
     @DeleteMapping("/{userId}/{clothesId}")
-    public Mono<Void> deleteClotheFromBasket(@PathVariable Long userId, @PathVariable Long clothesId){
-        return basketService.deleteElement(userId, clothesId);
+    public Mono<ResponseEntity<Void>> deleteClotheFromBasket(@PathVariable Long userId, @PathVariable Long clothesId){
+        return basketService.deleteElement(userId, clothesId)
+                .then(Mono.just(ResponseEntity.ok().<Void>build()))
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @PatchMapping("/{userId}")
-    public Mono<Void> buyClothes(@PathVariable Long userId, @RequestBody Long[] itemsArray){
-        Arrays.stream(itemsArray).forEach(System.out::println);
-        return basketService.buyClothes(userId, itemsArray);
+    @PostMapping("/{userId}")
+    public Mono<ResponseEntity<Void>> buyClothes(@PathVariable Long userId, @RequestBody Long[] itemsArray){
+        return basketService.buyClothes(userId, itemsArray)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
-
 }

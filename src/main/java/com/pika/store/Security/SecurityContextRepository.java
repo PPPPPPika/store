@@ -36,7 +36,4 @@ public class SecurityContextRepository implements ServerSecurityContextRepositor
         }
         return Mono.empty();
     }
-
-
-
 }

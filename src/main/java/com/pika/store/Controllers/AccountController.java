@@ -1,8 +1,11 @@
 package com.pika.store.Controllers;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.pika.store.Configuration.ViewConfiguration;
 import com.pika.store.Models.User;
 import com.pika.store.Services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -18,13 +21,19 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+    @JsonView(ViewConfiguration.PERMITTED_DATA.class)
     @GetMapping("/account")
-    public Mono<User> getAccount(Principal principal){
-        return accountService.getUser(principal.getName());
+    public Mono<ResponseEntity<User>> getAccount(Principal principal){
+        return accountService.getUser(principal.getName())
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
+    @JsonView(ViewConfiguration.PERMITTED_DATA.class)
     @PatchMapping("/account")
-    public Mono<User> editAccount(@RequestBody User editedUser, Principal principal){
-        return accountService.editUser(principal.getName(), editedUser);
+    public Mono<ResponseEntity<User>> editAccount(@RequestBody User editedUser, Principal principal){
+        return accountService.editUser(principal.getName(), editedUser)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
 }

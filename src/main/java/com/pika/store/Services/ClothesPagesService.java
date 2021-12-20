@@ -1,4 +1,4 @@
-package com.pika.store.Services.ClothesServices;
+package com.pika.store.Services;
 
 import com.pika.store.Models.Clothes;
 import com.pika.store.Models.Enums.Genus;

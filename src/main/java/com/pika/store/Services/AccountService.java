@@ -29,19 +29,23 @@ public class AccountService {
                 oldUser.setEmail(newUser.getEmail());
         }
         if (newUser.getName() != null && !newUser.getName().isEmpty() && !newUser.getName().isBlank()){
+            if (oldUser.getName() == null)
+                oldUser.setName(newUser.getName());
             if (!oldUser.getName().equals(newUser.getName()))
                 oldUser.setName(newUser.getName());
         }
         if (newUser.getNumber() != null && !newUser.getNumber().isEmpty() && !newUser.getNumber().isBlank()){
+            if (oldUser.getNumber() == null)
+                oldUser.setNumber(newUser.getNumber());
             if (!oldUser.getNumber().equals(newUser.getNumber()))
                 oldUser.setNumber(newUser.getNumber());
         }
         if (newUser.getAddress() != null && !newUser.getAddress().isEmpty() && !newUser.getAddress().isBlank()){
+            if (oldUser.getAddress() == null)
+                oldUser.setAddress(newUser.getAddress());
             if (!oldUser.getAddress().equals(newUser.getAddress()))
                 oldUser.setAddress(newUser.getAddress());
         }
-
         return oldUser;
     }
-
 }

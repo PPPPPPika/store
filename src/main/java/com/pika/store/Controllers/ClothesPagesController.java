@@ -1,8 +1,9 @@
 package com.pika.store.Controllers;
 
 import com.pika.store.Models.Clothes;
-import com.pika.store.Services.ClothesServices.ClothesPagesService;
+import com.pika.store.Services.ClothesPagesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,9 @@ public class ClothesPagesController {
     }
 
     @GetMapping("/{genus}/{id}")
-    public Mono<Clothes> getClothes(@PathVariable String genus, @PathVariable Long id){
-        return clothesPagesService.getElement(genus, id);
+    public Mono<ResponseEntity<Clothes>> getClothes(@PathVariable String genus, @PathVariable Long id){
+        return clothesPagesService.getElement(genus, id)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 }

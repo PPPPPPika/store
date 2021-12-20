@@ -1,4 +1,4 @@
-package com.pika.store.Services.BasketServices;
+package com.pika.store.Services;
 
 import com.pika.store.Models.Basket;
 import com.pika.store.Models.Clothes;
@@ -15,7 +15,6 @@ public class BasketService {
     private final BasketRepository basketRepository;
     private final OrderRepository orderRepository;
     private final ClothesRepository clothesRepository;
-
 
     @Autowired
     public BasketService(BasketRepository basketRepository,
