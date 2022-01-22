@@ -1,9 +1,6 @@
 package com.pika.store.Controllers;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.pika.store.Configuration.ViewConfiguration;
 import com.pika.store.Models.Order;
-import com.pika.store.Models.User;
 import com.pika.store.Repositorys.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

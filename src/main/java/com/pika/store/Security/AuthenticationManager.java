@@ -24,14 +24,12 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
     public Mono<Authentication> authenticate(Authentication authentication) {
         String authToken = authentication.getCredentials().toString();
         String username;
-
         try {
             username = jwtUtil.extractUsername(authToken);
         } catch (Exception e) {
             username = null;
             System.out.println(e);
         }
-
         if (username != null && jwtUtil.validateToken(authToken)) {
             Claims claims = jwtUtil.getClaimsFromToken(authToken);
             List<String> role = claims.get("role", List.class);
